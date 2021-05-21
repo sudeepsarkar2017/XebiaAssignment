@@ -1,0 +1,29 @@
+{
+  "name": "xebia",
+  "version": "1.0.0",
+  "description": "Xebia Assignment For Test Er",
+  "main": "index.js",
+  "scripts": {
+    "dist": "node ./bin/dist.js",
+    "tsc": "./node_modules/.bin/tsc",
+    "setup": "npm install && npx webdriver-manager update && npm run tsc && npm run dist",
+    "test": "npm run dist && npx protractor ./protractor.conf.js"
+  },
+  "author": "Sudeep Sarkar",
+  "license": "ISC",
+  "dependencies": {
+    "protractor": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.7.4",
+    "@types/jasminewd2": "^2.0.9",
+    "@types/node": "^15.3.1",
+    "shelljs": "^0.8.4",
+    "typescript": "^4.2.4",
+    "jasmine-reporters": "^2.3.1",
+    "protractor-beautiful-reporter": "^1.2.1",
+    "protractor-custom-locators": "^3.0.0",
+    "protractor-jasmine2-html-reporter": "0.0.7",
+    "protractor-jasmine2-screenshot-reporter": "^0.5.0"
+  }
+}

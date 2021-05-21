@@ -1,0 +1,31 @@
+{
+    "testUrl": {},
+    "testScript_001": [
+        {
+            "url": "https://www.hollandamerica.com",
+            "pageTitle": "Cruises, Cruise Ship Deals, Travel Cruises | Holland America",
+            "logoAltText": "Holland America Line home page"
+        },
+        {
+            "url": "https://www.seabourn.com",
+            "pageTitle": "Luxury Cruises & Luxury Cruise Vacations | Seabourn",
+            "logoAltText": "Seabourn Home Page"
+        }
+    ],
+    "testScript_002": [
+        {
+            "url": "https://www.hollandamerica.com",
+            "destination": "",
+            "departureDate": "",
+            "duration": "",
+            "departFrom": ""
+        },
+        {
+            "url": "https://www.seabourn.com",
+            "destination": "",
+            "departureDate": "",
+            "duration": "",
+            "departFrom": ""
+        }
+    ]
+}
