@@ -1,5 +1,4 @@
 var HtmlReporter = require('protractor-beautiful-reporter');
-var jasmineReporters = require('jasmine-reporters');
 
 exports.config = {
 
@@ -18,7 +17,8 @@ exports.config = {
     rootElement: 'body',
     specs: ['./build/test/module1/*spec.js'],
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 5000000
+        defaultTimeoutInterval: 5000000,
+        realtimeFailure: true
     },
 
     onPrepare: function () {
@@ -28,11 +28,6 @@ exports.config = {
             baseDirectory: './build/output/screenshots',
             docTitle: 'Xebia Assignment'
         }).getJasmine2Reporter());
-
-        jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
-            consolidateAll: false,
-            savePath: './build/output'
-        }));
     }
 
 };

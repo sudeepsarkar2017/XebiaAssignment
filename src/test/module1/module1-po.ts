@@ -1,4 +1,4 @@
-import { element, ElementFinder, by, browser, protractor } from "protractor";
+import { element, ElementFinder, by, browser, protractor, Locator } from "protractor";
 import { ActionLibrary } from "../../common/action-library";
 import { CommonPage } from "../../common/common-po";
 
@@ -7,13 +7,7 @@ let EC = protractor.ExpectedConditions;
 
 export class Module1Page extends CommonPage {
 
-    readonly destinationsCruiseSearchTextBox: Promise<ElementFinder> = this.cruiseSearchFilterOption('Destinations');
-    readonly departureDateCruiseSearchTextBox: Promise<ElementFinder> = this.cruiseSearchFilterOption('Departure Date');
-    readonly durationCruiseSearchTextBox: Promise<ElementFinder> = this.cruiseSearchFilterOption('Duration');
-    readonly departFromCruiseSearchTextBox: Promise<ElementFinder> = this.cruiseSearchFilterOption('Depart From');
     readonly cruseSearchButton: ElementFinder = element(by.xpath("//div[@class='search-bar']//button[text()='Search' and contains(@aria-disabled, 'false')]"))
-    readonly destination: ElementFinder = element(by.css(".card-title"))
-    readonly departFrom: ElementFinder = element(by.xpath("//div[@class='itinerary-block']/div[text()='Departs']/following-sibling::span"))
     readonly cookiesBanner: ElementFinder = element(by.css("#onetrust-close-btn-container button"))
 
     async cruiseSearchFilterOption(filterLabel: string): Promise<ElementFinder> {
@@ -42,13 +36,13 @@ export class Module1Page extends CommonPage {
                 await action.waitForInvisibilityOf(this.cookiesBanner)
             }
         })
-        await action.click(await this.destinationsCruiseSearchTextBox);
+        await action.click(await this.cruiseSearchFilterOption('Destinations'));
         data.destination = await this.clickCruiseSearchOverLayFirstOption();
-        await action.click(await this.departureDateCruiseSearchTextBox);
+        await action.click(await this.cruiseSearchFilterOption('Departure Date'));
         data.departureDate = await this.clickCruiseSearchOverLayFirstOption();
-        await action.click(await this.durationCruiseSearchTextBox);
+        await action.click(await this.cruiseSearchFilterOption('Duration'));
         data.duration = await this.clickCruiseSearchOverLayFirstOption();
-        await action.click(await this.departFromCruiseSearchTextBox);
+        await action.click(await this.cruiseSearchFilterOption('Depart From'));
         data.departFrom = await this.clickCruiseSearchOverLayFirstOption();
         await action.click(this.cruseSearchButton);
     }
@@ -58,8 +52,7 @@ export class Module1Page extends CommonPage {
         let destination: ElementFinder = element(by.css(".card-title"))
         let departFrom: ElementFinder = element(by.xpath("//div[@class='itinerary-block']/div[text()='Departs']/following-sibling::span"))
         await action.waitForElement(itineraryCard);
-        // expect(await (await action.grabText(destination)).trim()).toContain(data.destination.trim());
-        expect(data.departFrom).toContain( (await action.grabText(departFrom)).trim());
+        expect(data.departFrom).toContain((await action.grabText(departFrom)).trim());
     }
 
 }
